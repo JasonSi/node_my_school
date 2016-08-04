@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/JasonSi/node_my_school/issues"
   },
-  "homepage": "https://github.com/JasonSi/node_my_school#readme"
+  "homepage": "https://github.com/JasonSi/node_my_school#readme",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "node-tesseract": "^0.2.7",
+    "superagent": "^2.1.0",
+    "superagent-charset": "^1.1.1"
+  }
 }

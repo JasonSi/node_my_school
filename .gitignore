@@ -1,3 +1,11 @@
 # node modules
 node_modules/*
 
+# config about accounts and passwords
+config.js
+
+# temporary captcha image
+temp/*.jpg
+
+# Result of scores
+result/*.json
