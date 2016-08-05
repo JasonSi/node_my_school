@@ -12,8 +12,7 @@ module.exports = function(account, callback) {
     credits.each(function() {
       creditScore.push({
         name: this.children[5].children[0].data.trim(),
-        credit: this.children[9].children[0].data.trim(),
-        prop: this.children[11].children[0].data.trim()
+        credit: this.children[9].children[0].data.trim()
       })
     })
     guides.each(function() {
@@ -24,6 +23,7 @@ module.exports = function(account, callback) {
       guideScore.push({
         cno: this.children[1].children[0].data.trim(),
         name: this.children[3].children[0].data.trim(),
+        prop: this.children[5].children[0].data.trim(),
         grade: this.children[7].children[0].data.trim(),
         date: this.children[9].children[0].data.trim()
       })
