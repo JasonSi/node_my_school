@@ -9,3 +9,8 @@ temp/*.jpg
 
 # Result of scores
 result/*.json
+
+# For test
+credit.html
+guide.html
+test.js

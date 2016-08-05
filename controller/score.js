@@ -1,6 +1,5 @@
 var mailer = require('./mailer')
 var parser  = require('./parser')
-var agent   = require('./agent')
 
 function Score(account) {
   this.account = account
@@ -12,8 +11,23 @@ Score.prototype = {
   constructor: Score,
 
   init: function() {
-    agent(this.account)
-    this.scores = parser(this.account)
+    parser(this.account, function(creditScore, guideScore) {
+      this.creditScore = creditScore
+      this.guideScore = guideScore
+      this._mergeScores(function(){
+
+      })
+    })
+  },
+  _mergeScores: function(callback) {
+    this.scores = creditScore
+    this._calculatePoint()
+    callback()
+  },
+  _calculatePoint: function() {
+    for(var course in this.scores){
+      console.log(course);
+    }
   }
 }
 
