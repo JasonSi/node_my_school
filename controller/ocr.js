@@ -8,10 +8,10 @@ module.exports = function(image, callback) {
   }
 
   tesseract.process(image, options, function(err, text) {
-      if(err) {
-        console.error(err)
-      } else {
-        callback(text.replace(/\s/g,''))
-      }
+    if (err) {
+      console.error(err)
+    } else {
+      callback(text.replace(/\s/g, ''))
+    }
   });
 }

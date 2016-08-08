@@ -1,12 +1,12 @@
 var loginUrl = 'http://202.119.113.135/loginAction.do'
 var vcodeUrl = 'http://202.119.113.135/validateCodeAction.do?random=0.4281'
-var creditUrl= 'http://202.119.113.135/gradeLnAllAction.do?type=ln&oper=fainfo&fajhh=1903'
 var guideUrl = 'http://202.119.113.135/gradeLnAllAction.do?type=ln&oper=lnFajhKcCjInfo'
+var creditUrl = 'http://202.119.113.135/gradeLnAllAction.do?type=ln&oper=fainfo&fajhh=1903'
 
-var request  = require('superagent')
-var charset  = require('superagent-charset')
-var ocr      = require('./ocr')
-var fs       = require("fs")
+var request = require('superagent')
+var charset = require('superagent-charset')
+var ocr = require('./ocr')
+var fs = require("fs")
 
 charset(request)
 
@@ -40,45 +40,45 @@ Agent.prototype = {
     var self = this
     self._downloadCaptcha(function() {
       request
-      .post(loginUrl)
-      .type('form')
-      .send({
-        zjh: self.account.number,
-        mm: self.account.password,
-        v_yzm: self.vcode
-      })
-      .set(self.headers)
-      .charset('gbk')
-      .end(function(err, res) {
-        if(res.headers['set-cookie']){
-          self.headers['Cookie'] = res.headers['set-cookie'][0].split(';')[0]
-        }
-        if(res.text.match(/验证码错误/)) {
-          self._login(callback)
-        } else {
-          callback()
-        }
-      })
+        .post(loginUrl)
+        .type('form')
+        .send({
+          zjh: self.account.number,
+          mm: self.account.password,
+          v_yzm: self.vcode
+        })
+        .set(self.headers)
+        .charset('gbk')
+        .end(function(err, res) {
+          if (res.headers['set-cookie']) {
+            self.headers['Cookie'] = res.headers['set-cookie'][0].split(';')[0]
+          }
+          if (res.text.match(/验证码错误/)) {
+            self._login(callback)
+          } else {
+            callback()
+          }
+        })
     })
   },
-  _downloadCaptcha: function(callback){
+  _downloadCaptcha: function(callback) {
     var self = this
     request
       .get(vcodeUrl)
       .set(self.headers)
       .end(function(err, res) {
-        if(res.headers['set-cookie']){
+        if (res.headers['set-cookie']) {
           self.headers['Cookie'] = res.headers['set-cookie'][0].split(';')[0]
         }
 
-        fs.writeFile(self.vcodePath, res.body,function(e) {
-          if(e){
+        fs.writeFile(self.vcodePath, res.body, function(e) {
+          if (e) {
             return console.error(e)
           } else {
             self._identify(function(code) {
               self.vcode = code
               console.log(code);
-              if(code.length != 4){
+              if (code.length != 4) {
                 self._downloadCaptcha(callback)
               } else {
                 callback()
@@ -96,7 +96,7 @@ Agent.prototype = {
         .set(self.headers)
         .charset('gbk')
         .end(function(CreditError, creditResult) {
-          if(creditResult.headers['set-cookie']){
+          if (creditResult.headers['set-cookie']) {
             self.headers['Cookie'] = creditResult.headers['set-cookie'][0].split(';')[0]
           }
           // TODO: For now I don't know how to assign two variable after two async function, so made it sync
