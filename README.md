@@ -15,3 +15,4 @@ Because of the fucking error "too many connection resets" of Mechanize in Ruby, 
 - [ ] Design an algorithm to judge whether there are updated scores.
 - [ ] Send email if scores updated.
 - [ ] Use asynchronous method to support more subscribers.
+- [ ] Bold the new scores in the email.
