@@ -9,9 +9,9 @@ Because of the fucking error "too many connection resets" of Mechanize in Ruby, 
 
 ## TODO
 
-- [ ] Simulate logging in the education administration system of our school.
-- [ ] Recognize the captcha automatically with Tesseract-OCR.
-- [ ] Parse the HTML to achieve scores, and beautify them into a proper data structure.
+- [x] Simulate logging in the education administration system of our school.
+- [x] Recognize the captcha automatically with Tesseract-OCR.
+- [x] Parse the HTML to achieve scores, and beautify them into a proper data structure.
 - [ ] Design an algorithm to judge whether there are updated scores.
 - [ ] Send email if scores updated.
 - [ ] Use asynchronous method to support more subscribers.
